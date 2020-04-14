@@ -66,7 +66,7 @@ echo -e "Downloadable Link is: \e[32mhttp://$IP/${DOMAIN}.tar.gz\e[0m\n\n\e[96mP
 
 
 
-#Initializing########################################################################
+#############################Initializing########################################
 
 read -p "Welcome!. Enter domain name: " DOMAIN
 

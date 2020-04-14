@@ -433,7 +433,54 @@ fi
 
 
 
+###########Mailbox generation!###########
 
+
+read -p "Mailbox required for the domain?: y/n: " RESPMBOX
+
+
+case "$RESPMBOX" in
+#####CASE:y #################
+
+   [nN] )
+
+    echo -e "\nMoving forward to Database generation utility\n"
+
+    ;;
+
+   [yY] ) 
+   
+    ls $HOMEDIR/mail/$DOMAIN>/dev/null 2>&1
+
+    if [ $? -ne 0 ]
+
+      then
+
+     	echo "Mailfolder not found for $DOMAIN"
+
+      else
+
+      	LISTMBOX=$(ls $HOMEDIR/mail/$DOMAIN)
+
+      	if [ -z "$LISTMBOX" ]
+
+      	then
+
+      	   echo "No mailboxes under $HOMEDIR/mail/$DOMAIN"
+
+           else
+
+      	 echo -e "Mailboxes for $DOMAIN are as listed\n\n$LISTMBOX"
+         mkdir -p /abusedatathree/$DOMAIN/mailbox
+         echo -e "Copying mailboxes to \e[32m/abusedatathree/$DOMAIN/mailbox\e[0m"
+         cp -r $HOMEDIR/mail/$DOMAIN/*  /abusedatathree/$DOMAIN/mailbox
+       
+      fi
+
+    fi  
+
+      ;;
+esac
 
 
 

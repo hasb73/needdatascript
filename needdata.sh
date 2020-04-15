@@ -58,13 +58,21 @@ IP=$(hostname -i)
 
 sleep 1s
 
+CURLRES="$(curl -s -o /dev/null -w "%{http_code}" http://$IP/${DOMAIN}.tar.gz)"
+
+echo "HTTP status code is $CURLRES"
+
+if [[ $CURLRES -eq 200 ]]
+
+then
+
 echo -e "Downloadable Link is: \e[32mhttp://$IP/${DOMAIN}.tar.gz\e[0m\n\n\e[96mPlease download to your PC and delete the zip file from /var/www/html/\n\n\e[0m"
 
-}
+else
 
+  echo -e "\ndownloadable link from /var/www/html could not be created\ndata is generated under \e[32m/abusedatathree${DOMAIN}.tar.gz\e[0m"
 
-
-
+fi
 
 #############################Initializing########################################
 

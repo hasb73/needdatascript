@@ -566,7 +566,7 @@ done
 [nN] )
 
 
-read -p "mention databases associated with the domain, seperated by space(press enter for no selection): `echo $'\n`" " CHOSENDB
+read -p "mention databases associated with the domain, seperated by space(press enter for no selection): `echo $'\n`" CHOSENDB
 
 
 mkdir -p /abusedatathree/$DOMAIN/databases
@@ -763,7 +763,7 @@ exit 1
           [nN] )
            
 
-           read -p "mention databases from the above list seperated by space.(press enter for no selection): `echo $'\n`"" SELDBDC
+           read -p "mention databases from the above list seperated by space.(press enter for no selection): `echo $'\n`" SELDBDC
             
            mkdir -p /abusedatathree/$DOMAIN/databases/backupDB
 

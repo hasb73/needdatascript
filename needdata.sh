@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 
@@ -43,8 +42,7 @@ esac
 
 }
 
-
-##########Archive zip function###########
+##########Archive zip/download function###########
 
 function create_archive () {
 
@@ -73,6 +71,8 @@ else
   echo -e "\ndownloadable link from /var/www/html could not be created\ndata is generated under \e[32m/abusedatathree${DOMAIN}.tar.gz\e[0m"
 
 fi
+
+}
 
 #############################Initializing########################################
 

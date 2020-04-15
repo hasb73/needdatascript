@@ -465,6 +465,8 @@ case "$RESPMBOX" in
       then
 
      	echo "Mailfolder not found for $DOMAIN"
+      
+      sleep 1s
 
       else
 
@@ -475,6 +477,8 @@ case "$RESPMBOX" in
       	then
 
       	   echo "No mailboxes under $HOMEDIR/mail/$DOMAIN"
+           
+           sleep 1s
 
            else
 

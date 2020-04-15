@@ -9,8 +9,8 @@
 function archive_util () {
 
 echo -e  "\n\n*******WELCOME TO ARCHIVE UTILITY***************\n\n"
-echo -e  "The contents of \e[96m/abusedatathree/$DOMAIN\e[0m are as follows\n$(ls -ltrh /abusedatathree/$DOMAIN)\n"
-read -p "Create an archive of /abusedatathree/${DOMAIN}: y/n " ARCHIVERESP
+echo -e  "The contents of \e[96m/needdatadump/$DOMAIN\e[0m are as follows\n$(ls -ltrh /needdatadump/$DOMAIN)\n"
+read -p "Create an archive of /needdatadump/${DOMAIN}: y/n " ARCHIVERESP
   
 
 case $ARCHIVERESP in 
@@ -49,7 +49,7 @@ function create_archive () {
 
   echo "Creating Archive. . . . . . . . "
 
-tar -czf ${DOMAIN}.tar.gz /abusedatathree/$DOMAIN>/dev/null 2>&1
+tar -czf ${DOMAIN}.tar.gz /needdatadump/$DOMAIN>/dev/null 2>&1
 cp -r ${DOMAIN}.tar.gz /var/www/html
 
 IP=$(hostname -i)
@@ -68,7 +68,7 @@ echo -e "Downloadable Link is: \e[32mhttp://$IP/${DOMAIN}.tar.gz\e[0m\n\n\e[96mP
 
 else
 
-  echo -e "\ndownloadable link from /var/www/html could not be created.\nPlease Delete the zip file from /var/www/html/\nData is generated under \e[32m/abusedatathree\${DOMAIN}.tar.gz\e[0m"
+  echo -e "\ndownloadable link from /var/www/html could not be created.\nPlease Delete the zip file from /var/www/html/\nData is generated under \e[32m/needdatadump\${DOMAIN}.tar.gz\e[0m"
 
 fi
 
@@ -76,11 +76,11 @@ fi
 
 #############################Initializing########################################
 
-read -p "Welcome!. Enter domain name: " DOMAIN
+read -p "Welcome! Enter domain name: " DOMAIN
 
 echo -e "\n\n"
 
-mkdir -p /abusedatathree/$DOMAIN
+mkdir -p /needdatadump/$DOMAIN
 
 
 #checking error status...
@@ -92,11 +92,11 @@ then
 
 else
 
-        echo -e "created base data directory: \e[32m/abusedatathree/$DOMAIN\e[0m"
+        echo -e "created base data directory: \e[32m/needdatadump/$DOMAIN\e[0m"
 
 fi
 
-echo -e "Generating domain access logs under \e[32m/abusedatathree/$DOMAIN/domain_access\e[0m"
+echo -e "Generating domain access logs under \e[32m/needdatadump/$DOMAIN/domain_access\e[0m"
 
 
 
@@ -140,7 +140,7 @@ then  #####THEN######
 
      then 
 
-      mkdir -p /abusedatathree/$DOMAIN/domain_access
+      mkdir -p /needdatadump/$DOMAIN/domain_access
       echo "Logs found under $HOMEDIR/logs"
  
    #copying cpanel domlogs(main domain)..................................................
@@ -148,13 +148,13 @@ then  #####THEN######
    for file in `cat homedirdomlogs.txt`
 
   do
-   /bin/cp $HOMEDIR/logs/$file /abusedatathree/$DOMAIN/domain_access/
+   /bin/cp $HOMEDIR/logs/$file /needdatadump/$DOMAIN/domain_access/
 
   done
 
      if [ $? -eq 0 ]
         then
-        echo -e "logs in $HOMEDIR/logs copied to \e[32m/abusedatathree/$DOMAIN/domain_access\e[0m"
+        echo -e "logs in $HOMEDIR/logs copied to \e[32m/needdatadump/$DOMAIN/domain_access\e[0m"
       fi
 
   else
@@ -174,7 +174,7 @@ then  #####THEN######
      if [ -s apachedomlogs.txt ] 
 
      then 
-      mkdir -p /abusedatathree/$DOMAIN/domain_access
+      mkdir -p /needdatadump/$DOMAIN/domain_access
       echo "Logs found under var/log/apache2/domlogs "
 
 ##########copying apache domlogs (main domain)#########
@@ -184,14 +184,14 @@ then  #####THEN######
      do
 
     cd /var/log/apache2/domlogs
-   /bin/cp $file /abusedatathree/$DOMAIN/domain_access/
+   /bin/cp $file /needdatadump/$DOMAIN/domain_access/
 
     done
 
    if [ $? -eq 0 ]
 
    then
-        echo -e "logs in /var/log/apache2/domlogs copied to \e[32m/abusedatathree/$DOMAIN/domain_access\e[0m"
+        echo -e "logs in /var/log/apache2/domlogs copied to \e[32m/needdatadump/$DOMAIN/domain_access\e[0m"
    fi
 
 
@@ -220,7 +220,7 @@ cd ~
      if [ -s homedirdomlogs.txt ] 
 
      then 
-      mkdir -p /abusedatathree/$DOMAIN/domain_access
+      mkdir -p /needdatadump/$DOMAIN/domain_access
       echo "Logs found under $HOMEDIR/logs"
 
       #copying homedir domlogs(addon)..................................................
@@ -230,13 +230,13 @@ cd ~
 
         do
          
-         /bin/cp $HOMEDIR/logs/$file /abusedatathree/$DOMAIN/domain_access/
+         /bin/cp $HOMEDIR/logs/$file /needdatadump/$DOMAIN/domain_access/
 
         done
 
          if [ $? -eq 0 ]
            then
-            echo -e  "logs in $HOMEDIR/logs copied to \e[32m/abusedatathree/$DOMAIN/domain_access\e[0m"
+            echo -e  "logs in $HOMEDIR/logs copied to \e[32m/needdatadump/$DOMAIN/domain_access\e[0m"
          fi
 
       else
@@ -254,7 +254,7 @@ cd ~
      if [ -s apachedomlogs.txt ] 
 
      then 
-      mkdir -p /abusedatathree/$DOMAIN/domain_access
+      mkdir -p /needdatadump/$DOMAIN/domain_access
       echo "Logs found under var/log/apache2/domlogs"
 
   #copying apache domlogs (addon)
@@ -264,13 +264,13 @@ cd ~
      do
 
     cd /var/log/apache2/domlogs
-   /bin/cp $file /abusedatathree/$DOMAIN/domain_access/
+   /bin/cp $file /needdatadump/$DOMAIN/domain_access/
 
     done
 
    if [ $? -eq 0 ]
    then
-        echo -e "logs in /var/log/apache2/domlogs copied to \e[32m/abusedatathree/$DOMAIN/domain_access\e[0m"
+        echo -e "logs in /var/log/apache2/domlogs copied to \e[32m/needdatadump/$DOMAIN/domain_access\e[0m"
    fi
 
 
@@ -314,9 +314,9 @@ if [ -s sshlog.txt ]
 
 then
 
-  mkdir -p /abusedatathree/$DOMAIN/SSH_logs/
-  echo -e "Copying ssh logs to \e[32m/abusedatathree/$DOMAIN/SSH_logs/\e[0m"
- /bin/cp -r  sshlog.txt /abusedatathree/$DOMAIN/SSH_logs/
+  mkdir -p /needdatadump/$DOMAIN/SSH_logs/
+  echo -e "Copying ssh logs to \e[32m/needdatadump/$DOMAIN/SSH_logs/\e[0m"
+ /bin/cp -r  sshlog.txt /needdatadump/$DOMAIN/SSH_logs/
 
 else
 echo -e "\e[31mNo ssh logs found for $USER on the server\e[0m"
@@ -333,7 +333,7 @@ fi
 
 echo -e  "\n\n*********Generating FTP logs*********" 
 
-echo -e "Generating FTP logs under: \e[32m/abusedatathree/$DOMAIN/FTP_logs/\e[0m"
+echo -e "Generating FTP logs under: \e[32m/needdatadump/$DOMAIN/FTP_logs/\e[0m"
 
 /bin/egrep "$USER|$DOMAIN" /var/log/messages | grep ftp >ftplogs.txt
 
@@ -351,9 +351,9 @@ echo "Searching archives of /var/log/messages-*"
 if [ -s ftplogs.txt ] 
 then
 
- mkdir -p /abusedatathree/$DOMAIN/FTP_logs/
- echo -e "Copying FTP logs to \e[32m/abusedatathree/$DOMAIN/FTP_logs/\e[0m"
- /bin/cp -r  ftplogs.txt /abusedatathree/$DOMAIN/FTP_logs/
+ mkdir -p /needdatadump/$DOMAIN/FTP_logs/
+ echo -e "Copying FTP logs to \e[32m/needdatadump/$DOMAIN/FTP_logs/\e[0m"
+ /bin/cp -r  ftplogs.txt /needdatadump/$DOMAIN/FTP_logs/
 
 else
 echo -e  "\e[31mNo FTP logs found for $DOMAIN on the server\e[0m"
@@ -368,7 +368,7 @@ fi
 
 echo -e "\n\n*********Generating EXIM Logs*********"
 
-mkdir -p /abusedatathree/$DOMAIN/emaillogs/
+mkdir -p /needdatadump/$DOMAIN/emaillogs/
 
 /bin/grep $DOMAIN /var/log/exim_mainlog>email_log.txt
 
@@ -388,8 +388,8 @@ echo "Checking exim_mainlog archives.."
 if [ -s email_log.txt ] 
 then
 
-echo -e "Copying Email logs to \e[32m/abusedatathree/$DOMAIN/emaillogs\e[0m"
- /bin/cp -r email_log.txt  /abusedatathree/$DOMAIN/emaillogs
+echo -e "Copying Email logs to \e[32m/needdatadump/$DOMAIN/emaillogs\e[0m"
+ /bin/cp -r email_log.txt  /needdatadump/$DOMAIN/emaillogs
 
 else
 echo -e "\e[31mNo exim logs found for $DOMAIN on the server \e[0m"
@@ -410,7 +410,7 @@ fi
 
 echo -e  "\n\n*********Generating Mail Access(login) Logs*********"
 
-echo -e "Generating Mail Access logs under: \e[32m/abusedatathree/$DOMAIN/mail_access/"
+echo -e "Generating Mail Access logs under: \e[32m/needdatadump/$DOMAIN/mail_access/"
 
 /bin/grep $DOMAIN /var/log/maillog| grep login>mail_access.txt;
 
@@ -432,9 +432,9 @@ if [ -s mail_access.txt ]
 
 then
 
-mkdir -p /abusedatathree/$DOMAIN/mail_access
-echo -e "Copying Email logs to \e[32m/abusedatathree/$DOMAIN/mail_access\e[0m"
-/bin/cp -r mail_access.txt  /abusedatathree/$DOMAIN/mail_access
+mkdir -p /needdatadump/$DOMAIN/mail_access
+echo -e "Copying Email logs to \e[32m/needdatadump/$DOMAIN/mail_access\e[0m"
+/bin/cp -r mail_access.txt  /needdatadump/$DOMAIN/mail_access
 
 else
 echo -e "\e[31mNo mail-access logs found for $DOMAIN on the server \e[0m"
@@ -467,28 +467,28 @@ case "$RESPMBOX" in
 
       then
 
-     	echo "Mailfolder not found for $DOMAIN"
+      echo "Mailfolder not found for $DOMAIN"
       
       sleep 1s
 
       else
 
-      	LISTMBOX=$(ls $HOMEDIR/mail/$DOMAIN)
+        LISTMBOX=$(ls $HOMEDIR/mail/$DOMAIN)
 
-      	if [ -z "$LISTMBOX" ]
+        if [ -z "$LISTMBOX" ]
 
-      	then
+        then
 
-      	   echo "No mailboxes under $HOMEDIR/mail/$DOMAIN"
+           echo "No mailboxes under $HOMEDIR/mail/$DOMAIN"
            
            sleep 1s
 
            else
 
-      	 echo -e "Mailboxes for $DOMAIN are as listed\n\n$LISTMBOX"
-         mkdir -p /abusedatathree/$DOMAIN/mailbox
-         echo -e "Copying mailboxes to \e[32m/abusedatathree/$DOMAIN/mailbox\e[0m"
-         cp -r $HOMEDIR/mail/$DOMAIN/*  /abusedatathree/$DOMAIN/mailbox
+         echo -e "Mailboxes for $DOMAIN are as listed\n\n$LISTMBOX"
+         mkdir -p /needdatadump/$DOMAIN/mailbox
+         echo -e "Copying mailboxes to \e[32m/needdatadump/$DOMAIN/mailbox\e[0m"
+         cp -r $HOMEDIR/mail/$DOMAIN/*  /needdatadump/$DOMAIN/mailbox
        
       fi
 
@@ -538,7 +538,7 @@ case "$RESPONSE" in
 
   echo "Generating archive of all databases:"
 
-  mkdir -p /abusedatathree/$DOMAIN/databases
+  mkdir -p /needdatadump/$DOMAIN/databases
 
 echo "$ALLDB">dblist.txt
 
@@ -548,11 +548,11 @@ for db in $(cat dblist.txt)
     
     mysqldump $db>$db.sql
     zip ${db}.sql.zip ${db}.sql
-    cp -r ${db}.sql.zip /abusedatathree/$DOMAIN/databases/
+    cp -r ${db}.sql.zip /needdatadump/$DOMAIN/databases/
 
   if [ $? -eq 0 ]
    then
-        echo -e "DB dump generated for ${db}.sql.zip under \e[32m/abusedatathree/$DOMAIN/databases/\e[0m"
+        echo -e "DB dump generated for ${db}.sql.zip under \e[32m/needdatadump/$DOMAIN/databases/\e[0m"
         
   else  
 
@@ -572,7 +572,7 @@ done
 read -p "mention databases associated with the domain, seperated by space(press enter for no selection): " CHOSENDB
 
 
-mkdir -p /abusedatathree/$DOMAIN/databases
+mkdir -p /needdatadump/$DOMAIN/databases
 
 echo "$CHOSENDB">dblist.txt
 
@@ -582,13 +582,13 @@ for db in $(cat dblist.txt)
     
     mysqldump $db>$db.sql
     zip ${db}.sql.zip ${db}.sql
-    cp -r ${db}.sql.zip /abusedatathree/$DOMAIN/databases/
+    cp -r ${db}.sql.zip /needdatadump/$DOMAIN/databases/
 
 
    if [ $? -eq 0 ]
 
    then
-        echo -e "DB dump generated for ${db}.sql.zip under \e[32m/abusedatathree/$DOMAIN/databases/\e[0m"
+        echo -e "DB dump generated for ${db}.sql.zip under \e[32m/needdatadump/$DOMAIN/databases/\e[0m"
    else  
 
       echo -e "\e[31mFailed to create DB dump $db.\e[0m"
@@ -660,7 +660,7 @@ exit 1
 
       else
 
-      echo -e "\e[32mDatacycle Available\e[0m\nCreating datacycle archives under \e[32m/abusedatathree/$DOMAIN/databases/backupDB\e[0m\n"
+      echo -e "\e[32mDatacycle Available\e[0m\nCreating datacycle archives under \e[32m/needdatadump/$DOMAIN/databases/backupDB\e[0m\n"
 
       ls /backup/cpbackup/*/$USER/mysql | grep ".sql" | grep -v "daily\|monthly\|weekly\|seed" | sort | uniq | sed 's/.sql//g'>dbdc.txt
 
@@ -686,7 +686,7 @@ exit 1
 
            echo "*****Generating archive of all the user's databases in datacycle******:"
 
-           mkdir -p /abusedatathree/$DOMAIN/databases/backupDB
+           mkdir -p /needdatadump/$DOMAIN/databases/backupDB
 
 
            for db in $(cat dbdc.txt)
@@ -695,7 +695,7 @@ exit 1
 
     ###########DAILY_ALLDBDC########################
 
-              cp -a  /backup/cpbackup/daily/$USER/mysql/${db}.sql "/abusedatathree/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/daily/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-daily.sql"
+              cp -a  /backup/cpbackup/daily/$USER/mysql/${db}.sql "/needdatadump/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/daily/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-daily.sql"
 
 
 
@@ -721,7 +721,7 @@ exit 1
 
                 do 
 
-                   cp -a  /backup/cpbackup/weekly/$USER/mysql/${db}.sql "/abusedatathree/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/weekly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-weekly.sql"
+                   cp -a  /backup/cpbackup/weekly/$USER/mysql/${db}.sql "/needdatadump/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/weekly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-weekly.sql"
 
                  if [ $? -eq 0 ]
 
@@ -745,7 +745,7 @@ exit 1
 
                  do 
 
-                  cp -a  /backup/cpbackup/monthly/$USER/mysql/${db}.sql "/abusedatathree/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/monthly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-monthly.sql"
+                  cp -a  /backup/cpbackup/monthly/$USER/mysql/${db}.sql "/needdatadump/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/monthly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-monthly.sql"
 
                  if [ $? -eq 0 ]
 
@@ -768,7 +768,7 @@ exit 1
 
            read -p "mention databases from the above list seperated by space.(press enter for no selection): " SELDBDC
             
-           mkdir -p /abusedatathree/$DOMAIN/databases/backupDB
+           mkdir -p /needdatadump/$DOMAIN/databases/backupDB
 
            echo "$SELDBDC">selectdbdc.txt
 
@@ -780,7 +780,7 @@ exit 1
 
     ###########DAILY_SELDBDC########################
 
-              cp -a  /backup/cpbackup/daily/$USER/mysql/${db}.sql "/abusedatathree/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/daily/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-daily.sql"
+              cp -a  /backup/cpbackup/daily/$USER/mysql/${db}.sql "/needdatadump/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/daily/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-daily.sql"
 
 
 
@@ -806,7 +806,7 @@ exit 1
 
                 do 
 
-                   cp -a  /backup/cpbackup/weekly/$USER/mysql/${db}.sql "/abusedatathree/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/weekly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-weekly.sql"
+                   cp -a  /backup/cpbackup/weekly/$USER/mysql/${db}.sql "/needdatadump/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/weekly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-weekly.sql"
 
                  if [ $? -eq 0 ]
 
@@ -830,7 +830,7 @@ exit 1
 
                  do 
 
-                  cp -a  /backup/cpbackup/monthly/$USER/mysql/${db}.sql "/abusedatathree/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/monthly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-monthly.sql"
+                  cp -a  /backup/cpbackup/monthly/$USER/mysql/${db}.sql "/needdatadump/$DOMAIN/databases/backupDB/$db.$(stat /backup/cpbackup/monthly/$USER/mysql/${db}.sql  | grep Modify  |  awk '{print $2}')-monthly.sql"
 
                  if [ $? -eq 0 ]
 

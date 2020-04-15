@@ -9,7 +9,7 @@
 function archive_util () {
 
 echo -e  "\n\n*******WELCOME TO ARCHIVE UTILITY***************\n\n"
-echo -e  "The contents of \e[34m/abusedatathree/$DOMAIN\e[0m are as follows\n$(ls -ltrh /abusedatathree/$DOMAIN)\n"
+echo -e  "The contents of \e[96m/abusedatathree/$DOMAIN\e[0m are as follows\n$(ls -ltrh /abusedatathree/$DOMAIN)\n"
 read -p "Create an archive of /abusedatathree/${DOMAIN}: y/n " ARCHIVERESP
   
 
@@ -566,7 +566,7 @@ done
 [nN] )
 
 
-read -p "Enter names of databases associated with the domain, seperated by space(press enter for no selection): " CHOSENDB
+read -p "mention databases associated with the domain, seperated by space(press enter for no selection): `echo $'\n`" " CHOSENDB
 
 
 mkdir -p /abusedatathree/$DOMAIN/databases
@@ -614,6 +614,8 @@ fi
 
 ################DATACYCLEBACKUPS#################################################
 
+
+echo -e "\n\n"
 
 read -p "Check for datacycle backups?: y/n " REPLY
 
@@ -761,7 +763,7 @@ exit 1
           [nN] )
            
 
-           read -p "Chose databases from the above list seperated by space.(press enter for no selection): " SELDBDC
+           read -p "mention databases from the above list seperated by space.(press enter for no selection): `echo $'\n`"" SELDBDC
             
            mkdir -p /abusedatathree/$DOMAIN/databases/backupDB
 

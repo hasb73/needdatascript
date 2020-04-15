@@ -68,7 +68,7 @@ echo -e "Downloadable Link is: \e[32mhttp://$IP/${DOMAIN}.tar.gz\e[0m\n\n\e[96mP
 
 else
 
-  echo -e "\ndownloadable link from /var/www/html could not be created\ndata is generated under \e[32m/abusedatathree${DOMAIN}.tar.gz\e[0m"
+  echo -e "\ndownloadable link from /var/www/html could not be created.\nPlease Delete the zip file from /var/www/html/\nData is generated under \e[32m/abusedatathree\${DOMAIN}.tar.gz\e[0m"
 
 fi
 
@@ -443,8 +443,9 @@ fi
 
 ###########Mailbox generation!###########
 
+echo -e "/n**********Mailbox Generation*****************/n"
 
-read -p "Mailbox required for the domain?: y/n: " RESPMBOX
+read -p "Mailbox required for $DOMAIN?: y/n: " RESPMBOX
 
 
 case "$RESPMBOX" in
@@ -452,7 +453,7 @@ case "$RESPMBOX" in
 
    [nN] )
 
-    echo -e "\nMoving forward to Database generation utility\n"
+    echo -e "\nAlright.Moving forward to Database generation utility\n"
 
     ;;
 

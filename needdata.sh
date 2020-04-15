@@ -306,8 +306,8 @@ if [ $? -eq 0 ]
 fi
 
 
-echo "Searching archives of /var/log/secure-*"
-/usr/bin/zgrep "Accepted password for $USER from" /var/log/secure-*>>sshlog.txt
+echo "Searching archives of /var/log/secure*.gz"
+/usr/bin/zgrep "Accepted password for $USER from" /var/log/secure*.gz>>sshlog.txt
 
  
 if [ -s sshlog.txt ] 
@@ -346,7 +346,7 @@ if [ $? -eq 0 ]
 fi
 
 echo "Searching archives of /var/log/messages-*"
-/usr/bin/zgrep "$USER\|$DOMAIN" /var/log/messages-* | grep ftp>>ftplogs.txt
+/usr/bin/zgrep "$USER\|$DOMAIN" /var/log/messages*.gz | grep ftp>>ftplogs.txt
 
 if [ -s ftplogs.txt ] 
 then
@@ -382,7 +382,7 @@ fi
 
 echo "Checking exim_mainlog archives.."
 
-/usr/bin/zgrep $DOMAIN /var/log/exim_mainlog-*>>email_log.txt
+/usr/bin/zgrep $DOMAIN /var/log/exim_mainlog*.gz>>email_log.txt
 
 
 if [ -s email_log.txt ] 
@@ -425,7 +425,7 @@ fi
 
 echo "Searching maillog Archives"
 
-/usr/bin/zgrep $DOMAIN /var/log/maillog-*| grep login*>>mail_access.txt
+/usr/bin/zgrep $DOMAIN /var/log/maillog*.gz | grep login*>>mail_access.txt
 
 
 if [ -s mail_access.txt ] 

@@ -443,7 +443,7 @@ fi
 
 ###########Mailbox generation!###########
 
-echo -e "/n**********Mailbox Generation*****************/n"
+echo -e "\n\n**********Mailbox Generation*****************\n"
 
 read -p "Mailbox required for $DOMAIN?: y/n: " RESPMBOX
 

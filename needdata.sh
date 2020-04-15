@@ -346,7 +346,7 @@ then
  /bin/cp -r  ftplogs.txt /abusedatathree/$DOMAIN/FTP_logs/
 
 else
-echo -e  "\e[31mNo FTP logs found for $USER on the server\e[0m"
+echo -e  "\e[31mNo FTP logs found for $DOMAIN on the server\e[0m"
 fi 
 
 
@@ -382,7 +382,7 @@ echo -e "Copying Email logs to \e[32m/abusedatathree/$DOMAIN/emaillogs\e[0m"
  /bin/cp -r email_log.txt  /abusedatathree/$DOMAIN/emaillogs
 
 else
-echo -e "\e[31mNo exim logs found for $USER on the server \e[0m"
+echo -e "\e[31mNo exim logs found for $DOMAIN on the server \e[0m"
 fi
 
 
@@ -427,7 +427,7 @@ echo -e "Copying Email logs to \e[32m/abusedatathree/$DOMAIN/mail_access\e[0m"
 /bin/cp -r mail_access.txt  /abusedatathree/$DOMAIN/mail_access
 
 else
-echo -e "\e[31mNo mail-access logs found for $USER on the server \e[0m"
+echo -e "\e[31mNo mail-access logs found for $DOMAIN on the server \e[0m"
 fi
 
 

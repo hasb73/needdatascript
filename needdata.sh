@@ -10,7 +10,7 @@ function archive_util () {
 
 echo -e  "\n\n*******WELCOME TO ARCHIVE UTILITY***************\n\n"
 echo -e  "The contents of \e[96m/needdatadump/$DOMAIN\e[0m are as follows\n$(ls -ltrh /needdatadump/$DOMAIN)\n"
-read -p "Create an archive of /needdatadump/${DOMAIN}: y/n " ARCHIVERESP
+read -p "Create an archive of /needdatadump/$DOMAIN: y/n " ARCHIVERESP
   
 
 case $ARCHIVERESP in 
@@ -485,7 +485,7 @@ case "$RESPMBOX" in
 
            else
 
-         echo -e "Mailboxes for $DOMAIN are as listed\n\n$LISTMBOX"
+         echo -e "Mailboxes for $DOMAIN are as listed\n\n$LISTMBOX\n\n"
          mkdir -p /needdatadump/$DOMAIN/mailbox
          echo -e "Copying mailboxes to \e[32m/needdatadump/$DOMAIN/mailbox\e[0m"
          cp -r $HOMEDIR/mail/$DOMAIN/*  /needdatadump/$DOMAIN/mailbox
@@ -674,7 +674,7 @@ exit 1
          else 
 
    #################################BACKUP DC START############################################
-         echo -e "The databases in datacycle backup are are\n$DBDC\n"
+         echo -e "The databases in datacycle backup are\n$DBDC\n"
  
          read -p "All above datacycle databases required?: y/n: " RESPDBDC
 

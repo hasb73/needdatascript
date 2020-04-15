@@ -6,11 +6,17 @@ Welcome!
 This is an interactive bash script that generates the below logs for cpanel based servers:
 
 1.Domain access logs
+
 2.FTP logs
+
 3.SSH logs
+
 4.Exim logs
+
 5.Mail access(IMAP/POP/localhost-webmail) logs
+
 6.Mailbox
+
 7.Databases, current and backup(from datacycle)
 
 Workflow:

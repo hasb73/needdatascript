@@ -333,7 +333,7 @@ echo -e  "\n\n*********Generating FTP logs*********"
 
 echo -e "Generating FTP logs under: \e[32m/abusedatathree/$DOMAIN/FTP_logs/\e[0m"
 
-/bin/egrep "$USER|$DOMAIN" /var/log/messages>ftplogs.txt
+/bin/egrep "$USER|$DOMAIN" /var/log/messages | grp ftp >ftplogs.txt
 
 if [ $? -eq 0 ]
    then
@@ -344,7 +344,7 @@ if [ $? -eq 0 ]
 fi
 
 echo "Searching archives of /var/log/messages-*"
-/usr/bin/zgrep "$USER\|$DOMAIN" /var/log/messages-*>>ftplogs.txt
+/usr/bin/zgrep "$USER\|$DOMAIN" /var/log/messages-* | grep ftp>>ftplogs.txt
 
 if [ -s ftplogs.txt ] 
 then

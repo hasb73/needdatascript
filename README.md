@@ -81,6 +81,8 @@ The function is defined at the beginning of the script and has 2 roles:
 1. Create a .tar.gz archive or /basedir
 2. Create a downloadable link by copying the archive to /var/www/html directory of the server
 
+**NOTE**: The downloadable link is only for downloading the archive to the local PC. Please do not give it to the abuse team(you may use Gdrive). Please remove the zip from /var/www/html after download is complete.
+
 Note: On Cloud and Rock servers, the downloadable link gives a 302 redirect to a 404.html page. 
 
 Please revert for any bugs or suggestions

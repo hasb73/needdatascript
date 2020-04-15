@@ -78,6 +78,8 @@ fi
 
 read -p "Welcome!. Enter domain name: " DOMAIN
 
+echo -e "\n\n"
+
 mkdir -p /abusedatathree/$DOMAIN
 
 

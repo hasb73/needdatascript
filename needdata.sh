@@ -678,7 +678,7 @@ exit 1
  
          read -p "All above datacycle databases required?: y/n: " RESPDBDC
 
-         case "$RESPONSE" in
+         case "$RESPDBDC" in
 
 #####CASE:y #################
 
